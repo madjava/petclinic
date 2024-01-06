@@ -15,7 +15,7 @@ pipeline {
         stage('Copy Artifact') {
            steps {
                    sh 'pwd'
-		   sh 'cp -r target/*.jar docker'
+		           sh 'cp -r target/*.jar docker'
            }
         }
 
@@ -29,5 +29,17 @@ pipeline {
            }
         }
 	  }
+
+    stage('Build on K8s ') {
+    steps {
+                sh 'pwd'
+                sh 'cp -R helm/* .'
+                sh 'ls -ltr'
+                sh 'pwd'
+                sh '/usr/local/bin/helm upgrade --install petclinic-app petclinic  --set image.repository=registry.hub.docker.com/madjava/petclinic --set image.tag=5'
+
+     }
     }
+
+  }
 }
