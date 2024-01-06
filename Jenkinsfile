@@ -36,7 +36,7 @@ pipeline {
                 sh 'cp -R helm/* .'
                 sh 'ls -ltr'
                 sh 'pwd'
-                sh '/usr/local/bin/helm upgrade --install petclinic-app petclinic  --set image.repository=registry.hub.docker.com/madjava/petclinic --set image.tag=${$BUILD_NUMBER}'
+                sh '/usr/local/bin/helm upgrade --install petclinic-app petclinic  --set image.repository=registry.hub.docker.com/madjava/petclinic --set image.tag=${BUILD_NUMBER}'
 
      }
     }
